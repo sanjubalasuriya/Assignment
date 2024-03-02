@@ -1,0 +1,103 @@
+
+Service-registry port - http://localhost:8761/eureka/
+Config-server - http://8088
+
+Api-gateway port - http://8060
+Auth-service port - http://8083
+Cart-service port - http://8082
+Item-service port - http://8081
+
+Java version - 17
+springboot version - 3.2.3
+
+
+========== Zipkin ========
+
+Run this command to build docker zipkin
+
+	 -> docker run -d -p 9411:9411 openzipkin/zipkin
+
+
+
+	
+
+******************** Test Cases inside the project *******************************
+
+******************** Run Individual projects and use below urls *******************************
+
+
+
+
+================================== User ===================================================
+
+User Register url - http://localhost:8060/api/v1/auth/signup
+
+	{
+	    "name":"",
+	    "email":"",
+	    "password":""
+	}
+
+User Login url - http://localhost:8060/api/v1/auth/signIn
+
+	{
+	    "email":"",
+	    "password":""
+	}
+
+User Refresh token url - http://localhost:8060/api/v1/auth/refresh
+
+User Change Role url - http://localhost:8060/api/v1/users/changeRole/{userId}
+
+	Admin => 1
+	User => 0 
+
+	{
+	   "role":1
+	}
+
+
+
+
+==================================== Item ===================================================
+
+
+Item Add url - http://localhost:8060/api/v1/items/save
+
+	{
+	    "name":"item1",
+	    "price": 1000,
+	    "qty":12
+	}
+
+Item get by id url - http://localhost:8060/api/v1/items/get-by-id?itemId=1
+
+Item Update url - http://localhost:8060/api/v1/items/{itemId}
+
+	{
+	    "name":"item2",
+	    "price": 1200,
+	    "qty":12
+	}
+
+Item Delete url - http://localhost:8060/api/v1/items/delete/{itemId}
+
+Item get all items paginated url - http://localhost:8060/api/v1/items/all?page=0&size=10&searchText=item1
+
+
+
+
+
+===================================== Cart ===================================================
+
+Cart Add url - http://localhost:8060/api/v1/carts/save
+
+	{
+	    "qty":5,
+	    "itemId":1,
+	    "userId":1
+	}
+
+Cart delete url - http://localhost:8060/api/v1/carts/delete/{cartId}
+
+
